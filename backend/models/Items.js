@@ -13,6 +13,10 @@ const itemDetailSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    quantity:{
+        type:Number,
+        required:true
+    },
     mfgDate: {
         type: Date,
         required: true,
