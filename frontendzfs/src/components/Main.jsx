@@ -5,6 +5,9 @@ function Main() {
   const [supplier,setsupplier]=useState([])
   const [quantity,setquantity]=useState(0)
 const handleSubmit=async()=>{
+  const itemObject={
+    itemname, price, supplier_info, mfgDate
+  }
 const displaysub=await fetch('http://localhost:8000/item/add', {
   method: 'POST',
   body: JSON.stringify(itemObject),
@@ -29,15 +32,17 @@ const displaysub=await fetch('http://localhost:8000/item/add', {
     </div>
     <div>
       <h3>Select Item</h3>
-      <select onChange={}>
+      <select onChange={(e)=>handleItem(e)}>
         <option value="0" selected>Select</option>
-        <option value="">Dummy </option>
+        {items.map(i=>
+        <option value={i.id}>{i.itemname} </option>
+        )}
       </select>
     </div>
     <div>
       <h3>Add Quantity</h3>
   
-    <input type="number" />
+    <input type="number" onChange={(e)=>setquantity(e.target.value)} value={quantity} />
  
     </div>
 
