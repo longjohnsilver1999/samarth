@@ -1,9 +1,11 @@
 import React from "react";
 import {useState,useEffect} from "react";
+import DisplayTable from './DisplayTable'
 function Main() {
   const [items,setitems]=useState([])
   const [supplier,setsupplier]=useState([])
   const [quantity,setquantity]=useState(0)
+  const [finalitens,setfinalitems]=useState([])
 const handleSubmit=async()=>{
   const itemObject={
     itemname, price, supplier_info, mfgDate
@@ -15,6 +17,20 @@ const displaysub=await fetch('http://localhost:8000/item/add', {
       'Content-Type': 'application/json'
   }}
 )
+const ds=await displaysub.json()
+}
+
+const fetchAllinventoryItems=async()=>{
+  const displaysub=await fetch('http://localhost:8000/getallitems', {
+    method: 'GET',
+
+    headers: {
+        'Content-Type': 'application/json'
+    }}
+  )
+  const finaldisplaysub=await displaysub.json()
+  setfinalitems(finaldisplaysub)
+
 }
 
     return (
@@ -50,6 +66,10 @@ const displaysub=await fetch('http://localhost:8000/item/add', {
       <button type="submit" onClick={()=>handleSubmit()}>Add to Inventory</button>
     </div>
     </form>
+
+    <div>
+      <DisplayTable Inventorytable={finalitens}/>
+    </div>
       </div>
     );
   }
