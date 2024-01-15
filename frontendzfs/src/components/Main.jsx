@@ -4,8 +4,14 @@ function Main() {
   const [items,setitems]=useState([])
   const [supplier,setsupplier]=useState([])
   const [quantity,setquantity]=useState(0)
-const fetchSuppliers=async()=>{
-const displaysub=await fetch()
+const handleSubmit=async()=>{
+const displaysub=await fetch('http://localhost:8000/item/add', {
+  method: 'POST',
+  body: JSON.stringify(itemObject),
+  headers: {
+      'Content-Type': 'application/json'
+  }}
+)
 }
 
     return (
@@ -14,10 +20,12 @@ const displaysub=await fetch()
     <h1>Inventory</h1>
     <div>
       <h3>Select SUPPLIER</h3>
-      <select onChange={}>
+      <select onChange={(e)=>handleSupplier(e)}>
         <option value="0" selected>Select</option>
-        <option value="">Dummy </option>
-      </select>
+        {supplier.map(i=>
+        <option value={i.id}>{i.name} </option>
+        )}
+        </select>
     </div>
     <div>
       <h3>Select Item</h3>
@@ -27,10 +35,14 @@ const displaysub=await fetch()
       </select>
     </div>
     <div>
-      <h3>Select Quantity</h3>
-      <select onChange={}>
+      <h3>Add Quantity</h3>
+  
     <input type="number" />
-      </select>
+ 
+    </div>
+
+    <div>
+      <button type="submit" onClick={()=>handleSubmit()}>Add to Inventory</button>
     </div>
     </form>
       </div>
