@@ -14,5 +14,5 @@ const supplierDetailSchema = new mongoose.Schema({
 
 })
 
-const ItemDetails = mongoose.model('Item', itemDetailSchema)
-module.exports = ItemDetails
+const supplierDetails = mongoose.model('Supplier', supplierDetailSchema)
+module.exports = supplierDetails
