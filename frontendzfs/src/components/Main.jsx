@@ -21,7 +21,7 @@ const ds=await displaysub.json()
 }
 
 const fetchAllinventoryItems=async()=>{
-  const displaysub=await fetch('http://localhost:8000/getallitems', {
+  const displaysub=await fetch('http://localhost:8000/item/getallitems', {
     method: 'GET',
 
     headers: {
