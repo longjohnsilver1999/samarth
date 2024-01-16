@@ -10,7 +10,8 @@ const itemDetailSchema = new mongoose.Schema({
         required: true,
     },
     supplier_info: {
-        type: String,
+        ref: "Supplier",
+        type: mongoose.Types.ObjectId,
         required: true
     },
     quantity:{

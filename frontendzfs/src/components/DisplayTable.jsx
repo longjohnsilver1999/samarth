@@ -17,6 +17,8 @@ function DisplayTable(props) {
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Mfg. Details</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </thead>
                 <tbody>
                     {props.Inventorytable.map(i =>
@@ -26,6 +28,8 @@ function DisplayTable(props) {
                             <td>{i.quantity}</td>
                             <td>{i.price}</td>
                             <td>{i.mfgDate}</td>
+                            <td><button onClick={()=>props.editItem(i)}><i className="fa fa-edit"></i></button></td>
+                            <td><button onClick={()=>props.deleteItem(i)}><i className="fa fa-trash"></i></button></td>
                         </tr>
                     )}
                 </tbody>
